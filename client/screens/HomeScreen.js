@@ -9,10 +9,24 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-
+import { ScreenOrientation } from 'expo'
 import { MonoText } from '../components/StyledText';
 
 export default function HomeScreen() {
+  // ScreenOrientation.getOrientationAsync()
+  //   .then((orient) => {
+  //     console.log(orient.orientation)
+  //     if(orient.orientation == "LANDSCAPE"){
+  //       ScreenOrientation.unlockAsync()
+  //         .then(() => {
+  //           ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+  //         })
+  //     }
+  //   })
+  ScreenOrientation.unlockAsync()
+  .then(() => {
+    ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+  });
   return (
     <View style={styles.container}>
       <ScrollView
