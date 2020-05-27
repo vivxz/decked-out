@@ -1,18 +1,13 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
 import Swiper from 'react-native-deck-swiper';
-// import { ScreenOrientation } from 'expo';
 
 export default function FlashcardScreen() {
-  // ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE)
-  //   .then(() => {
-  //     ScreenOrientation.unlockAsync()
-  //   })
   return (
     <ScrollView style={styles.container}>
       <Swiper
         animatedCardOpacity
-        cards={['I', 'LIKE', 'CEREAL']}
+        cards={['I', 'LIKE', 'CEREAL', 'YESSSSA']}
         renderCard={(card) => {
           return (
             <View style={styles.card}>
@@ -35,7 +30,8 @@ export default function FlashcardScreen() {
 }
 
 FlashcardScreen.navigationOptions = {
-  title: 'Flashcards',
+  // title: 'Flashcards',
+  header: null
 };
 
 const styles = StyleSheet.create({
@@ -45,8 +41,8 @@ const styles = StyleSheet.create({
   },
   card: {
     // flex: 1,
-    height: "80%",
-    marginTop: -25,
+    height: 650,
+    marginTop: 10,
     marginBottom: 25,
     borderRadius: 4,
     borderWidth: 2,

@@ -1,36 +1,40 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { View, Text, StyleSheet, Platform } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
-export default class FolderComponent extends Component {
-  static propTypes = {
-    items: PropTypes.array.isRequired
-  };
-
-  render() {
-    return (
-      <View style={styles.itemsList}>
-        {this.props.items.map((item, index) => {
-          return (
-            <View key={index}>
-              <Text style={styles.itemtext}>{item.name}</Text>
-            </View>
-          );
-        })}
-      </View>
-    );
-  }
+export default function FolderComponent(props) {
+  return (
+    <View style={styles.itemsList}>
+      {props.folders.map((folder, index) => {
+        return (
+          <View key={index}>
+            <Ionicons 
+              size={40} 
+              style={{ marginBottom: -3, textAlign:'center' }} 
+              name={Platform.OS === 'ios' ? 'ios-folder-open' : 'md-folder-open'} 
+              onPress={() => props.navigation.navigate('Folder')}
+              // onLongPress={() => console.log('HOLDING')} –––– on hold to remove folder
+            />
+            <Text style={styles.itemtext}>{folder.name}</Text>
+          </View>
+        );
+      })}
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   itemsList: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    marginTop: 45,
+    marginRight: 15,
+    marginLeft: 15
   },
   itemtext: {
     fontSize: 12,
     fontWeight: 'bold',
-    // textAlign: 'center'
+    textAlign: 'center'
   }
 });
