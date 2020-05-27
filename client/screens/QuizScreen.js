@@ -14,10 +14,6 @@ export default function QuizScreen() {
   );
 }
 
-QuizScreen.navigationOptions = {
-  title: 'Quiz',
-};
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

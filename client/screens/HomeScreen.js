@@ -65,11 +65,6 @@ export default function HomeScreen ({navigation}) {
   );
 }
 
-HomeScreen.navigationOptions = {
-  header: null,
-  // title: 'Home',
-};
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

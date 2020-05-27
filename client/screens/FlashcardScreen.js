@@ -29,11 +29,6 @@ export default function FlashcardScreen() {
   );
 }
 
-FlashcardScreen.navigationOptions = {
-  // title: 'Flashcards',
-  header: null
-};
-
 const styles = StyleSheet.create({
   container: {
     // flex: 1,

@@ -14,10 +14,6 @@ export default function FolderScreen() {
   );
 }
 
-FolderScreen.navigationOptions = {
-  title: 'Folder',
-};
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
