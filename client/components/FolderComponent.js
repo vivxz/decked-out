@@ -3,16 +3,20 @@ import { View, Text, StyleSheet, Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function FolderComponent(props) {
+
   return (
     <View style={styles.itemsList}>
       {props.folders.map((folder, index) => {
         return (
-          <View key={index}>
+          <View key={index} index={index}>
             <Ionicons 
               size={40} 
               style={{ marginBottom: -3, textAlign:'center' }} 
               name={Platform.OS === 'ios' ? 'ios-folder-open' : 'md-folder-open'} 
-              onPress={() => props.navigation.navigate('Folder')}
+              onPress={() => props.navigation.navigate('Folder', { 
+                itemId: 0,
+                qna: folder.file
+              })}
               // onLongPress={() => console.log('HOLDING')} –––– on hold to remove folder
             />
             <Text style={styles.itemtext}>{folder.name}</Text>
