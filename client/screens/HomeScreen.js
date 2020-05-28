@@ -22,7 +22,7 @@ export default function HomeScreen ({navigation}) {
   const [folder, setFolder] = useState('');
   const [allFolders, setAllFolders] = useState([]);
 
-  handleChange = event => {
+  handleFolderChange = event => {
     setFolder(event.nativeEvent.text)
   }
 
@@ -35,15 +35,21 @@ export default function HomeScreen ({navigation}) {
     itemsRef.on('value', snapshot => {
       let data = snapshot.val();
       let items = Object.values(data);
-      setAllFolders(items);
+      let key = Object.keys(data)
+      var cardFolders = items.map((folder, index) => {
+        folder['id'] = key[index];
+        return folder
+      })
+      setAllFolders(cardFolders);
     })
-  });
-
+  },[folder]);
+  
+  // console.log(folder)
   return (
     <View style={styles.container}>
       <ScrollView>
         <Text style={styles.title}>Add folder</Text>
-        <TextInput style={styles.folderInput} onChange={handleChange} />
+        <TextInput style={styles.folderInput} onChange={handleFolderChange} />
         <TouchableHighlight 
           underlayColor="white"
           onPress={handleSubmit}
