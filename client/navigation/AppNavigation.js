@@ -1,7 +1,5 @@
 import React from 'react';
-import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator, createAppContainer } from 'react-navigation';
-import TabBarIcon from '../components/TabBarIcon';
+import { createStackNavigator } from 'react-navigation';
 import HomeScreen from '../screens/HomeScreen';
 import FolderScreen from '../screens/FolderScreen';
 import QuizScreen from '../screens/QuizScreen';
@@ -29,54 +27,4 @@ const HomeStack = createStackNavigator({
   }
   });
 
-  const TabStack = createBottomTabNavigator({
-    Home: {
-      screen: HomeStack,
-      navigationOptions: {
-        tabBarLabel: 'Home',
-        tabBarIcon: ({ focused }) => (
-          <TabBarIcon
-            focused={focused}
-            name={
-              Platform.OS === 'ios'
-                ? `ios-home`
-                : 'md-home'
-            }
-          />
-        ),
-      }
-    },
-    FlashCard: {
-      screen: FlashcardScreen,
-      navigationOptions: {
-        tabBarLabel: 'Flashcards',
-        tabBarIcon: ({ focused }) => (
-          <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-albums' : 'md-albums'} />
-        ),
-      }
-    },
-    Quiz: {
-      screen: QuizScreen,
-      navigationOptions: {
-        tabBarLabel: 'Quiz',
-        tabBarIcon: ({ focused }) => (
-          <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-help-circle-outline' : 'md-help-circle-outline'} />
-        ),
-      }
-    },
-    Setting: {
-      screen: SettingsScreen,
-      navigationOptions: {
-        tabBarLabel: 'Settings',
-        tabBarIcon: ({ focused }) => (
-          <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-        ),
-      } 
-    }
-  },{
-    initialRouteName: "Home"
-  });
-
-  const AppContainter = createAppContainer(TabStack);
-  
-  export default AppContainter
+  export default HomeStack;
