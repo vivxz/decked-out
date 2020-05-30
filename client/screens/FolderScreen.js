@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { StyleSheet, View, Text, TouchableHighlight, Alert } from 'react-native';
 import { db } from '../config';
 import { TextInput } from 'react-native-gesture-handler';
+import CardComponent from '../components/CardComponent';
 
 export default function FolderScreen(props) {
 
@@ -17,6 +18,7 @@ export default function FolderScreen(props) {
 
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('')
+  const [cards, setCards] = useState([]);
 
   handleQuestionChange = event => {
     setQuestion(event.nativeEvent.text);
@@ -31,6 +33,16 @@ export default function FolderScreen(props) {
     Alert.alert('Item added successfully')
   }
 
+  useEffect(() => {
+    getCards.on('value', snapshot => {
+      let data = snapshot.val();
+      if (data){
+        let items = Object.values(data);
+        setCards(items);
+      }
+    })
+  },[cards])
+
   return (
     <View>
       <Text>FOLDER SCREEN</Text>
@@ -43,6 +55,11 @@ export default function FolderScreen(props) {
         >
           <Text style={styles.buttonText}>Add</Text>
         </TouchableHighlight>
+
+        { cards.length > null ?
+        <CardComponent cards={cards}/>
+          : <Text>No cards</Text>
+        }
 
     </View>
   );

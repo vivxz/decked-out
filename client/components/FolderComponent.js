@@ -15,7 +15,7 @@ export default function FolderComponent(props) {
               onPress={() => props.navigation.navigate('Folder', { 
                 name: folder.name,
                 card: folder.cards,
-                keys: props.keys
+                id: folder.id
               })}
               // onLongPress={() => console.log('HOLDING')} –––– on hold to remove folder
               />
