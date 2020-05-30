@@ -44,7 +44,6 @@ export default function HomeScreen ({navigation}) {
     })
   },[folder]);
   
-  // console.log(folder)
   return (
     <View style={styles.container}>
       <ScrollView>
