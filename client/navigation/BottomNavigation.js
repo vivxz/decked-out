@@ -3,9 +3,9 @@ import { Platform } from 'react-native';
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import HomeStack from './AppNavigation';
 import TabBarIcon from '../components/TabBarIcon';
-import QuizScreen from '../screens/QuizScreen';
-import FlashcardScreen from '../screens/FlashcardScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import Quiz from '../screens/QuizScreen';
+import Flashcard from '../screens/FlashcardScreen';
+import Settings from '../screens/SettingsScreen';
 
 const TabStack = createBottomTabNavigator({
   Home: {
@@ -25,7 +25,7 @@ const TabStack = createBottomTabNavigator({
     }
   },
   FlashCard: {
-    screen: FlashcardScreen,
+    screen: Flashcard,
     navigationOptions: {
       tabBarLabel: 'Flashcards',
       tabBarIcon: ({ focused }) => (
@@ -34,7 +34,7 @@ const TabStack = createBottomTabNavigator({
     }
   },
   Quiz: {
-    screen: QuizScreen,
+    screen: Quiz,
     navigationOptions: {
       tabBarLabel: 'Quiz',
       tabBarIcon: ({ focused }) => (
@@ -43,7 +43,7 @@ const TabStack = createBottomTabNavigator({
     }
   },
   Setting: {
-    screen: SettingsScreen,
+    screen: Settings,
     navigationOptions: {
       tabBarLabel: 'Settings',
       tabBarIcon: ({ focused }) => (
