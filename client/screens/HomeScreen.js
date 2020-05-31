@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { db } from '../config';
 import FolderComponent from '../components/FolderComponent';
+import Auth from './AuthScreen';
 import { TextInput, TouchableHighlight } from 'react-native-gesture-handler';
 
 let addFolder = folder => {
@@ -16,11 +17,13 @@ let addFolder = folder => {
   })
 };
 
-let itemsRef = db.ref('/folders');
+let itemsRef = db.ref(`/users/{user_id}/folders`)
+// let itemsRef = db.ref(`/folders`);
 
 export default function HomeScreen ({navigation}) {
   const [folder, setFolder] = useState('');
   const [allFolders, setAllFolders] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   handleFolderChange = event => {
     setFolder(event.nativeEvent.text)
@@ -44,8 +47,11 @@ export default function HomeScreen ({navigation}) {
     })
   },[folder]);
   
+  // console.log(itemsRef)
+
   return (
     <View style={styles.container}>
+      {loggedIn ? 
       <ScrollView>
         <Text style={styles.title}>Add folder</Text>
         <TextInput style={styles.folderInput} onChange={handleFolderChange} />
@@ -66,6 +72,7 @@ export default function HomeScreen ({navigation}) {
           )}
 
       </ScrollView>
+      : <Auth loggedIn={loggedIn} setLoggedIn={setLoggedIn} navigation={navigation}/>}
     </View>
   );
 }
